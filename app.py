@@ -16,9 +16,10 @@ def create_account():
 
     # Menjalankan script shell dengan input dari user
     try:
+        # Menyesuaikan protokol dan input untuk skrip shell
         result = subprocess.run(
             [f"/usr/bin/create_{protocol}"],  # Menyesuaikan dengan protokol
-            input=f"{username}\n{expired}",
+            input=f"{username}\n{expired}",  # Input yang dikirimkan ke skrip shell
             text=True,
             capture_output=True,
             check=True
