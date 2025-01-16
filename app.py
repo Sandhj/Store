@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import subprocess
+import os
 
 app = Flask(__name__)
 
@@ -14,18 +15,17 @@ def create_account():
     username = request.form['username']
     expired = request.form['expired']
 
-    # Debugging: Cetak data input yang diterima dari form
+    # Debugging: Log data yang diterima dari form
     print(f"Received data - Protocol: {protocol}, Username: {username}, Expired: {expired}")
 
-    # Menjalankan script shell dengan input dari user
+    # Menjalankan skrip shell dengan input dari user
     try:
         # Debugging: Log sebelum menjalankan skrip shell
         print(f"Running script for protocol: {protocol} with username: {username} and expired: {expired}")
         
-        # Menjalankan skrip shell
+        # Menjalankan skrip shell dengan argumen (bukan input interaktif)
         result = subprocess.run(
-            [f"/usr/bin/create_{protocol}"],  # Menyesuaikan dengan protokol
-            input=f"{username}\n{expired}",  # Input yang dikirimkan ke skrip shell
+            [f"/usr/bin/create_{protocol}", username, expired],  # Argumen username dan expired
             text=True,
             capture_output=True,
             check=True
@@ -42,6 +42,15 @@ def create_account():
         print(f"Error: {e.stderr.strip()}")
         output = f"Error: {e.stderr.strip()}"
 
+    # Membaca file output yang dihasilkan oleh skrip shell
+    output_file = f"/root/project/{username}_output.txt"
+    if os.path.exists(output_file):
+        with open(output_file, 'r') as file:
+            output = file.read()
+        
+        # Menghapus file output setelah dibaca
+        os.remove(output_file)
+
     # Render halaman hasil
     return render_template(
         'result.html',
@@ -52,4 +61,4 @@ def create_account():
     )
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5003, debug=True)
+    app.run(host='0.0.0.0', port=5003)
