@@ -11,6 +11,9 @@ def home():
 
 @app.route('/create', methods=['POST'])
 def create_account():
+    if request.method == 'GET':
+        return render_template('create.html')  # Menggunakan create.html untuk form
+    elif request.method == 'POST':
     # Ambil data dari form
     protocol = request.form['protocol']
     username = request.form['username']
