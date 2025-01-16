@@ -15,12 +15,12 @@ def create_account():
         return render_template('create.html')  # Menggunakan create.html untuk form
     elif request.method == 'POST':
     # Ambil data dari form
-    protocol = request.form['protocol']
-    username = request.form['username']
-    expired = request.form['expired']
+        protocol = request.form['protocol']
+        username = request.form['username']
+        expired = request.form['expired']
 
-    # Debugging: Log data yang diterima dari form
-    print(f"Received data - Protocol: {protocol}, Username: {username}, Expired: {expired}")
+        # Debugging: Log data yang diterima dari form
+        print(f"Received data - Protocol: {protocol}, Username: {username}, Expired: {expired}")
 
     # Menjalankan skrip shell dengan input dari user
     try:
