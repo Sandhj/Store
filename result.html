@@ -4,20 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Creation Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Gunakan font Lato */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .result {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .result p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .result pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: monospace;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Membungkus teks panjang */
+            word-wrap: break-word; /* Memastikan kata panjang dipisah */
+            max-height: 300px; /* Jika output sangat panjang */
+            overflow-y: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .btn:hover {
+            background: #45a049;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Account Created Successfully</h1>
-
+        <h1>Successfully Created</h1>
         <div class="result">
-            <p><strong>Protocol:</strong> {{ protocol }}</p>
             <p><strong>Username:</strong> {{ username }}</p>
             <p><strong>Expired:</strong> {{ expired }} days</p>
-            <h2>Output from Script:</h2>
+            <h2>Rincian Akun</h2>
             <pre>{{ output }}</pre>
         </div>
-
         <a href="/" class="btn">Go Back</a>
     </div>
 </body>
