@@ -81,9 +81,9 @@ def create_account():
     )
 
 @app.route('/renew', methods=['GET', 'POST'])
-def create_account():
+def renew_account():
     if request.method == 'GET':
-        return render_template('create.html')  # Menggunakan create.html untuk form
+        return render_template('renew.html')  # Menggunakan create.html untuk form
     elif request.method == 'POST':
     # Ambil data dari form
         protocol = request.form['protocol']
@@ -100,7 +100,7 @@ def create_account():
 
         # Menjalankan skrip shell dengan memberikan input interaktif (username dan expired)
         result = subprocess.run(
-            [f"/usr/bin/create_{protocol}"],  # Skrip untuk protokol (vmess, vless, trojan)
+            [f"/usr/bin/renew_{protocol}"],  # Skrip untuk protokol (vmess, vless, trojan)
             input=f"{username}\n{expired}\n",  # Memberikan input username dan expired
             text=True,
             capture_output=True,
