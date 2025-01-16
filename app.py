@@ -20,10 +20,9 @@ def create_account():
 
     # Menjalankan skrip shell dengan input dari user
     try:
-        # Debugging: Log sebelum menjalankan skrip shell
+        # Menjalankan skrip shell dengan argumen (bukan input interaktif)
         print(f"Running script for protocol: {protocol} with username: {username} and expired: {expired}")
         
-        # Menjalankan skrip shell dengan argumen (bukan input interaktif)
         result = subprocess.run(
             [f"/usr/bin/create_{protocol}", username, expired],  # Argumen username dan expired
             text=True,
@@ -31,17 +30,11 @@ def create_account():
             check=True
         )
         
-        # Debugging: Log output dari skrip shell
-        print(f"Script output: {result.stdout.strip()}")
-        
-        # Hasil output dari script shell
-        output = result.stdout.strip()
-
     except subprocess.CalledProcessError as e:
         # Debugging: Tangkap kesalahan dan tampilkan error stderr
         print(f"Error: {e.stderr.strip()}")
         output = f"Error: {e.stderr.strip()}"
-
+    
     # Membaca file output yang dihasilkan oleh skrip shell
     output_file = f"/root/project/{username}_output.txt"
     if os.path.exists(output_file):
