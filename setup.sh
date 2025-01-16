@@ -4,6 +4,8 @@ cd /root/project/
 mkdir -p templates
 python3 -m venv web
 
+source web/bin/activate
+
 pip install flask
 pip install requests
 
