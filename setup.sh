@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir -p /root/project/
-cd /roo/project
+cd /root/project
 mkdir -p templates
 mkdir -p static
 python3 -m venv web
