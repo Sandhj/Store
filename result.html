@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Created - SANSTORE</title>
+    <title>Account Creation Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Account Created</h1>
-        <p><strong>Username:</strong> {{ username }}</p>
-        <p><strong>Expired:</strong> {{ expired }} days</p>
-        <p><strong>Protocol:</strong> {{ protocol }}</p>
-        
-        <h3>Output:</h3>
-        <pre>{{ output }}</pre>
-        
-        <a href="/">Back to Home</a>
+        <h1>Account Created Successfully</h1>
+
+        <div class="result">
+            <p><strong>Protocol:</strong> {{ protocol }}</p>
+            <p><strong>Username:</strong> {{ username }}</p>
+            <p><strong>Expired:</strong> {{ expired }} days</p>
+            <h2>Output from Script:</h2>
+            <pre>{{ output }}</pre>
+        </div>
+
+        <a href="/" class="btn">Go Back</a>
     </div>
 </body>
 </html>
