@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import subprocess
 import os
+import requests
 
 app = Flask(__name__)
 
@@ -35,6 +36,17 @@ def create_account():
         # Jika berhasil, outputnya akan ditangkap oleh result.stdout
         print(f"Script output: {result.stdout.strip()}")
         
+        # Kirim notifikasi ke bot Telegram admin
+        telegram_token = "7360190308:AAH79nXyUiU4TRscBtYRLg14WVNfi1q1T1M"
+        chat_id = "576495165"
+        message = f"""
+        <b>New Account Created</b>
+        <b>Protocol:</b> {protocol}
+        <b>Username:</b> {username}
+        <b>Expired:</b> {expired} days
+        """
+        send_telegram_notification(telegram_token, chat_id, message)
+        
     except subprocess.CalledProcessError as e:
         # Tangkap kesalahan jika terjadi error pada eksekusi skrip shell
         print(f"Error: {e.stderr.strip()}")
@@ -64,6 +76,20 @@ def create_account():
         protocol=protocol,
         output=output
     )
+    
+def send_telegram_notification(token, chat_id, message):
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": message,
+        "parse_mode": "HTML"
+    }
+    try:
+        response = requests.post(url, json=payload)
+        if response.status_code != 200:
+            print(f"Failed to send message: {response.text}")
+    except Exception as e:
+        print(f"Error sending Telegram notification: {e}")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5003)
