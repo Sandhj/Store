@@ -1,15 +1,17 @@
+/* General Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    color: #fff;
+    background: #ffffff;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+/* Container */
 .container {
     background: #ffffff;
     color: #333;
@@ -20,16 +22,24 @@ body {
     text-align: center;
 }
 
+/* Title */
 .title {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
+/* Form */
 .form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 
 label {
@@ -43,6 +53,7 @@ select, input {
     border-radius: 5px;
     font-size: 16px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 input:focus, select:focus {
@@ -50,6 +61,7 @@ input:focus, select:focus {
     outline: none;
 }
 
+/* Button */
 .btn {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: #fff;
@@ -66,6 +78,7 @@ input:focus, select:focus {
     background: linear-gradient(135deg, #2575fc, #6a11cb);
 }
 
+/* Info Box */
 .info-box {
     margin-top: 20px;
     padding: 15px;
