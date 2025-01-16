@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANSTORE</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">SANSTORE</h1>
+        <form class="form">
+            <div class="form-group">
+                <label for="protocol">Protokol</label>
+                <select id="protocol" name="protocol" required>
+                    <option value="vmess">Vmess</option>
+                    <option value="vless">Vless</option>
+                    <option value="trojan">Trojan</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="device">Pengguna</label>
+                <select id="device" name="device" required>
+                    <option value="hp">HP</option>
+                    <option value="stb">STB</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Masukkan Username" required>
+            </div>
+            <div class="form-group">
+                <label for="expired">Expired</label>
+                <select id="expired" name="expired" required>
+                    <option value="30">30 Hari</option>
+                    <option value="60">60 Hari</option>
+                    <option value="90">90 Hari</option>
+                    <option value="120">120 Hari</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+        <div class="info-box">
+            <p>Fitur ini nanti saya beritahu kelanjutannya</p>
+        </div>
+    </div>
+</body>
+</html>
