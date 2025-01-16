@@ -15,4 +15,5 @@ cd
 cd /root/project/static
 wget -q https://raw.githubusercontent.com/Sandhj/Store/main/styles.css/root/project/static/
 
+cd
 rm setup.sh
