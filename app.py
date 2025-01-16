@@ -114,7 +114,7 @@ def renew_account():
         telegram_token = "7360190308:AAH79nXyUiU4TRscBtYRLg14WVNfi1q1T1M"
         chat_id = "576495165"
         message = f"""
-        <b>New Account Created</b>
+        <b>Renew Account Create</b>
         <b>Protocol:</b> {protocol}
         <b>Username:</b> {username}
         <b>Expired:</b> {expired} days
