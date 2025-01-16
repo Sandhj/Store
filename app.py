@@ -20,27 +20,39 @@ def create_account():
 
     # Menjalankan skrip shell dengan input dari user
     try:
-        # Menjalankan skrip shell dengan argumen (bukan input interaktif)
+        # Debugging: Log sebelum menjalankan skrip shell
         print(f"Running script for protocol: {protocol} with username: {username} and expired: {expired}")
-        
+
+        # Menjalankan skrip shell dengan memberikan input interaktif (username dan expired)
         result = subprocess.run(
-            [f"/usr/bin/create_{protocol}", username, expired],  # Argumen username dan expired
+            [f"/usr/bin/create_{protocol}"],  # Skrip untuk protokol (vmess, vless, trojan)
+            input=f"{username}\n{expired}\n",  # Memberikan input username dan expired
             text=True,
             capture_output=True,
             check=True
         )
         
+        # Jika berhasil, outputnya akan ditangkap oleh result.stdout
+        print(f"Script output: {result.stdout.strip()}")
+        
     except subprocess.CalledProcessError as e:
-        # Debugging: Tangkap kesalahan dan tampilkan error stderr
+        # Tangkap kesalahan jika terjadi error pada eksekusi skrip shell
         print(f"Error: {e.stderr.strip()}")
         output = f"Error: {e.stderr.strip()}"
-    
+        return render_template(
+            'result.html',
+            username=username,
+            expired=expired,
+            protocol=protocol,
+            output=output
+        )
+
     # Membaca file output yang dihasilkan oleh skrip shell
     output_file = f"/root/project/{username}_output.txt"
     if os.path.exists(output_file):
         with open(output_file, 'r') as file:
             output = file.read()
-        
+
         # Menghapus file output setelah dibaca
         os.remove(output_file)
 
