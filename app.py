@@ -9,7 +9,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/create', methods=['POST'])
+@app.route('/create', methods=['GET', 'POST'])
 def create_account():
     if request.method == 'GET':
         return render_template('create.html')  # Menggunakan create.html untuk form
